@@ -29,6 +29,9 @@ services:
         - raft0.example.com:/var/hyperledger/production/orderer
     ports:
     - 7050:7050
+    extra_hosts:
+      - "raft2.example.com:192.168.9.196"
+      - "raft3.example.com:192.168.9.196"
 
   raft1.example.com:
     extends:
@@ -44,6 +47,9 @@ services:
         - raft1.example.com:/var/hyperledger/production/orderer
     ports:
     - 8050:7050
+    extra_hosts:
+      - "raft2.example.com:192.168.9.196"
+      - "raft3.example.com:192.168.9.196"
 
 
   peer0.org1.example.com:
