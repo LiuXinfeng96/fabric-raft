@@ -19,6 +19,8 @@ OrdererOrgs:
     Specs:
       - Hostname: raft0
       - Hostname: raft1
+      - Hostname: raft2
+      - Hostname: raft3
 
 # ---------------------------------------------------------------------------
 # "PeerOrgs" - Definition of organizations managing peer nodes

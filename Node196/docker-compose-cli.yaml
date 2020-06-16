@@ -6,7 +6,8 @@
 version: '2'
 
 volumes:
-  raft1.example.com:
+  raft2.example.com:
+  raft3.example.com:
   peer0.org2.example.com:
   peer1.org2.example.com:
 
@@ -14,18 +15,33 @@ networks:
   byfn:
 
 services:
-  raft1.example.com:
+  raft2.example.com:
     extends:
       file:   base/peer-base.yaml
       service: orderer-base
-    container_name: raft1.example.com
+    container_name: raft2.example.com
     networks:
       - byfn
     volumes:
         - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
-        - ./crypto-config/ordererOrganizations/example.com/orderers/raft1.example.com/msp:/var/hyperledger/orderer/msp
-        - ./crypto-config/ordererOrganizations/example.com/orderers/raft1.example.com/tls/:/var/hyperledger/orderer/tls
-        - raft1.example.com:/var/hyperledger/production/orderer
+        - ./crypto-config/ordererOrganizations/example.com/orderers/raft2.example.com/msp:/var/hyperledger/orderer/msp
+        - ./crypto-config/ordererOrganizations/example.com/orderers/raft2.example.com/tls/:/var/hyperledger/orderer/tls
+        - raft2.example.com:/var/hyperledger/production/orderer
+    ports:
+    - 7050:7050
+
+  raft3.example.com:
+    extends:
+      file:   base/peer-base.yaml
+      service: orderer-base
+    container_name: raft3.example.com
+    networks:
+      - byfn
+    volumes:
+        - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+        - ./crypto-config/ordererOrganizations/example.com/orderers/raft3.example.com/msp:/var/hyperledger/orderer/msp
+        - ./crypto-config/ordererOrganizations/example.com/orderers/raft3.example.com/tls/:/var/hyperledger/orderer/tls
+        - raft3.example.com:/var/hyperledger/production/orderer
     ports:
     - 7050:7050
 
@@ -38,6 +54,7 @@ services:
       - byfn
     extra_hosts:
       - "raft0.example.com:192.168.9.195"
+      - "raft1.example.com:192.168.9.195"
       - "peer0.org1.example.com:192.168.9.195"
       - "peer1.org1.example.com:192.168.9.195"
 
@@ -50,6 +67,7 @@ services:
       - byfn
     extra_hosts:
       - "raft0.example.com:192.168.9.195"
+      - "raft1.example.com:192.168.9.195"
       - "peer0.org1.example.com:192.168.9.195"
       - "peer1.org1.example.com:192.168.9.195"
 
@@ -80,13 +98,15 @@ services:
         - ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
         - ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
     depends_on:
-      - raft1.example.com
+      - raft2.example.com
+      - raft3.example.com
       - peer0.org2.example.com
       - peer1.org2.example.com
     networks:
       - byfn
     extra_hosts:
       - "raft0.example.com:192.168.9.195"
+      - "raft1.example.com:192.168.9.195"
       - "peer0.org1.example.com:192.168.9.195"
       - "peer1.org1.example.com:192.168.9.195"
 

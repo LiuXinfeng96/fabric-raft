@@ -7,6 +7,7 @@ version: '2'
 
 volumes:
   raft0.example.com:
+  raft1.example.com:
   peer0.org1.example.com:
   peer1.org1.example.com:
 
@@ -29,6 +30,22 @@ services:
     ports:
     - 7050:7050
 
+  raft1.example.com:
+    extends:
+      file:   base/peer-base.yaml
+      service: orderer-base
+    container_name: raft1.example.com
+    networks:
+      - byfn
+    volumes:
+        - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+        - ./crypto-config/ordererOrganizations/example.com/orderers/raft1.example.com/msp:/var/hyperledger/orderer/msp
+        - ./crypto-config/ordererOrganizations/example.com/orderers/raft1.example.com/tls/:/var/hyperledger/orderer/tls
+        - raft1.example.com:/var/hyperledger/production/orderer
+    ports:
+    - 8050:7050
+
+
   peer0.org1.example.com:
     container_name: peer0.org1.example.com
     extends:
@@ -37,7 +54,8 @@ services:
     networks:
       - byfn
     extra_hosts:
-      - "raft1.example.com:192.168.9.196"
+      - "raft2.example.com:192.168.9.196"
+      - "raft3.example.com:192.168.9.196"
       - "peer0.org2.example.com:192.168.9.196"
       - "peer1.org2.example.com:192.168.9.196"
 
@@ -49,13 +67,14 @@ services:
     networks:
       - byfn
     extra_hosts:
-      - "raft1.example.com:192.168.9.196"
+      - "raft2.example.com:192.168.9.196"
+      - "raft3.example.com:192.168.9.196"
       - "peer0.org2.example.com:192.168.9.196"
       - "peer1.org2.example.com:192.168.9.196"
 
   cli:
     container_name: cli
-    image: hyperledger/fabric-tools
+    image: hyperledger/fabric-tools:1.4.6
     tty: true
     stdin_open: true
     environment:
@@ -80,12 +99,14 @@ services:
         - ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
     depends_on:
       - raft0.example.com
+      - raft1.example.com
       - peer0.org1.example.com
       - peer1.org1.example.com
     networks:
       - byfn
     extra_hosts:
-      - "raft1.example.com:192.168.9.196"
+      - "raft2.example.com:192.168.9.196"
+      - "raft3.example.com:192.168.9.196"
       - "peer0.org2.example.com:192.168.9.196"
       - "peer1.org2.example.com:192.168.9.196"
 
