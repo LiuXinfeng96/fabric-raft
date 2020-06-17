@@ -221,9 +221,9 @@ Orderer: &OrdererDefaults
 
     Addresses:
         - raft0.example.com:7050
-        - raft1.example.com:8050
+        - raft1.example.com:7050
         - raft2.example.com:7050
-        - raft3.example.com:8050
+        - raft3.example.com:7050
 
     # Batch Timeout: The amount of time to wait before creating a batch
     BatchTimeout: 2s
@@ -262,7 +262,7 @@ Orderer: &OrdererDefaults
               ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/raft0.example.com/tls/server.crt
               ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/raft0.example.com/tls/server.crt
             - Host: raft1.example.com
-              Port: 8050
+              Port: 7050
               ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/raft1.example.com/tls/server.crt
               ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/raft1.example.com/tls/server.crt
             - Host: raft2.example.com
@@ -270,7 +270,7 @@ Orderer: &OrdererDefaults
               ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/raft2.example.com/tls/server.crt
               ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/raft2.example.com/tls/server.crt
             - Host: raft3.example.com
-              Port: 8050
+              Port: 7050
               ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/raft3.example.com/tls/server.crt
               ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/raft3.example.com/tls/server.crt
 
@@ -402,7 +402,7 @@ Profiles:
                   ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/raft0.example.com/tls/server.crt
                   ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/raft0.example.com/tls/server.crt
                 - Host: raft1.example.com
-                  Port: 8050
+                  Port: 7050
                   ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/raft1.example.com/tls/server.crt
                   ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/raft1.example.com/tls/server.crt
                 - Host: raft2.example.com
@@ -410,14 +410,14 @@ Profiles:
                   ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/raft2.example.com/tls/server.crt
                   ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/raft2.example.com/tls/server.crt
                 - Host: raft3.example.com
-                  Port: 8050
+                  Port: 7050
                   ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/raft3.example.com/tls/server.crt
                   ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/raft3.example.com/tls/server.crt
             Addresses:
                 - raft0.example.com:7050
-                - raft1.example.com:8050
+                - raft1.example.com:7050
                 - raft2.example.com:7050
-                - raft3.example.com:8050
+                - raft3.example.com:7050
 
             Organizations:
             - *OrdererOrg
