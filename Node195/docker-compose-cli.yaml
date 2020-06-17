@@ -30,6 +30,8 @@ services:
     ports:
     - 7050:7050
     extra_hosts:
+      - "raft0.example.com:192.168.9.195"
+      - "raft1.example.com:192.168.9.195"
       - "raft2.example.com:192.168.9.196"
       - "raft3.example.com:192.168.9.196"
 
@@ -46,8 +48,10 @@ services:
         - ./crypto-config/ordererOrganizations/example.com/orderers/raft1.example.com/tls/:/var/hyperledger/orderer/tls
         - raft1.example.com:/var/hyperledger/production/orderer
     ports:
-    - 8050:7050
+    - 8050:8050
     extra_hosts:
+      - "raft0.example.com:192.168.9.195"
+      - "raft1.example.com:192.168.9.195"
       - "raft2.example.com:192.168.9.196"
       - "raft3.example.com:192.168.9.196"
 
@@ -60,10 +64,10 @@ services:
     networks:
       - byfn
     extra_hosts:
+      - "raft0.example.com:192.168.9.195"
+      - "raft1.example.com:192.168.9.195"
       - "raft2.example.com:192.168.9.196"
       - "raft3.example.com:192.168.9.196"
-      - "peer0.org2.example.com:192.168.9.196"
-      - "peer1.org2.example.com:192.168.9.196"
 
   peer1.org1.example.com:
     container_name: peer1.org1.example.com
@@ -73,10 +77,10 @@ services:
     networks:
       - byfn
     extra_hosts:
+      - "raft0.example.com:192.168.9.195"
+      - "raft1.example.com:192.168.9.195"
       - "raft2.example.com:192.168.9.196"
       - "raft3.example.com:192.168.9.196"
-      - "peer0.org2.example.com:192.168.9.196"
-      - "peer1.org2.example.com:192.168.9.196"
 
   cli:
     container_name: cli
@@ -111,8 +115,12 @@ services:
     networks:
       - byfn
     extra_hosts:
+      - "raft0.example.com:192.168.9.195"
+      - "raft1.example.com:192.168.9.195"
       - "raft2.example.com:192.168.9.196"
       - "raft3.example.com:192.168.9.196"
+      - "peer0.org1.example.com:192.168.9.195"
+      - "peer1.org1.example.com:192.168.9.195"
       - "peer0.org2.example.com:192.168.9.196"
       - "peer1.org2.example.com:192.168.9.196"
 
