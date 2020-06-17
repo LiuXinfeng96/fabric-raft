@@ -30,8 +30,6 @@ services:
     ports:
     - 7050:7050
     extra_hosts:
-      - "raft0.example.com:192.168.9.195"
-      - "raft1.example.com:192.168.9.195"
       - "raft2.example.com:192.168.9.196"
       - "raft3.example.com:192.168.9.196"
 
@@ -50,8 +48,6 @@ services:
     ports:
     - 8050:7050
     extra_hosts:
-      - "raft0.example.com:192.168.9.195"
-      - "raft1.example.com:192.168.9.195"
       - "raft2.example.com:192.168.9.196"
       - "raft3.example.com:192.168.9.196"
 
@@ -64,8 +60,6 @@ services:
     networks:
       - byfn
     extra_hosts:
-      - "raft0.example.com:192.168.9.195"
-      - "raft1.example.com:192.168.9.195"
       - "raft2.example.com:192.168.9.196"
       - "raft3.example.com:192.168.9.196"
 
@@ -77,8 +71,6 @@ services:
     networks:
       - byfn
     extra_hosts:
-      - "raft0.example.com:192.168.9.195"
-      - "raft1.example.com:192.168.9.195"
       - "raft2.example.com:192.168.9.196"
       - "raft3.example.com:192.168.9.196"
 
@@ -115,12 +107,8 @@ services:
     networks:
       - byfn
     extra_hosts:
-      - "raft0.example.com:192.168.9.195"
-      - "raft1.example.com:192.168.9.195"
       - "raft2.example.com:192.168.9.196"
       - "raft3.example.com:192.168.9.196"
-      - "peer0.org1.example.com:192.168.9.195"
-      - "peer1.org1.example.com:192.168.9.195"
       - "peer0.org2.example.com:192.168.9.196"
       - "peer1.org2.example.com:192.168.9.196"
 
