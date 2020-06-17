@@ -29,9 +29,6 @@ services:
         - raft2.example.com:/var/hyperledger/production/orderer
     ports:
     - 7050:7050
-    extra_hosts:
-      - "raft0.example.com:192.168.9.195"
-      - "raft1.example.com:192.168.9.195"
 
   raft3.example.com:
     extends:
@@ -47,9 +44,6 @@ services:
         - raft3.example.com:/var/hyperledger/production/orderer
     ports:
     - 8050:7050
-    extra_hosts:
-      - "raft0.example.com:192.168.9.195"
-      - "raft1.example.com:192.168.9.195"
 
   peer0.org2.example.com:
     container_name: peer0.org2.example.com
@@ -58,9 +52,6 @@ services:
       service: peer0.org2.example.com
     networks:
       - byfn
-    extra_hosts:
-      - "raft0.example.com:192.168.9.195"
-      - "raft1.example.com:192.168.9.195"
 
   peer1.org2.example.com:
     container_name: peer1.org2.example.com
@@ -69,9 +60,6 @@ services:
       service: peer1.org2.example.com
     networks:
       - byfn
-    extra_hosts:
-      - "raft0.example.com:192.168.9.195"
-      - "raft1.example.com:192.168.9.195"
 
   cli:
     container_name: cli
@@ -105,9 +93,4 @@ services:
       - peer1.org2.example.com
     networks:
       - byfn
-    extra_hosts:
-      - "raft0.example.com:192.168.9.195"
-      - "raft1.example.com:192.168.9.195"
-      - "peer0.org1.example.com:192.168.9.195"
-      - "peer1.org1.example.com:192.168.9.195"
 
